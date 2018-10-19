@@ -1,2 +1,2 @@
-Arquivo de teste do git.
+Arquivo de teste do git. Mais um teste.
 
