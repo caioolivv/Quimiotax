@@ -14,6 +14,10 @@ Ki = 18
 
 Ka = 30000
 
+Kr = 1
+
+Kb = 1
+
 A = -2.5
 
 m0 = 1
@@ -21,7 +25,7 @@ m0 = 1
 N = 10 #cluster size
 
 
-bacteria = pd.DataFrame(0, index = range(0,Nbac), columns = ['a', 'l', 'm', 'L'])
+bacteria = pd.DataFrame(0, index = range(0,Nbac), columns = ['a', 'l', 'm', 'L', 'x', 'y', 'vx', 'vy'])
 
 evolucao = pd.DataFrame(columns = ['t']+list(bacteria.columns))
 
@@ -42,11 +46,18 @@ def a(fm, L):
     
 i = 0
 
-for t in np.arange(0,tfinal,dt):
+def DinamicaInterna(t):
     L = fL(t)
     bacteria['L'] = L
     bacteria['a'] = a(bacteria.m,L)
     #print(t, "\n", bacteria.mean())
+    
+def DinamicaExterna(t):
+    
+    
+for t in np.arange(0,tfinal,dt):
+    DinamicaInterna(t)
+    DinamicaExterna(t)
     evolucao.loc[i] = [t]+list(bacteria.mean(axis=0))
     i = i + 1
     
