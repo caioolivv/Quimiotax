@@ -22,7 +22,7 @@ A = -2.5
 
 m0 = 1
 
-N = 1 #cluster size
+N = 5 #cluster size
 
 
 bacteria = pd.DataFrame(0, index = range(0,Nbac), columns = ['a', 'l', 'm', 'L', 'x', 'y', 'vx', 'vy'])
